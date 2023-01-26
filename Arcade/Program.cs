@@ -9,16 +9,24 @@ namespace Arcade
             Console.CursorVisible = false;
             Console.SetWindowSize(170, 43);
 
-            PrintArcadeText();
-            PrintVersionText();
-            ArcadeWaitForKey();
+            bool opc;
+            MenuArcade menu = new MenuArcade();
+
+            PrintTitleScreen();
+            opc = ArcadeWaitForKey();
+
+            if (opc)
+            {
+                TransicionSalidaArcade();
+                menu.MenuJuegos();
+            }
         }
-        private static void PrintArcadeText()
+
+        static void PrintTitleScreen()
         {
             int x = 10;
             int y = 1;
-
-            //TEXTO ARCADE
+            //Texto Arcade
             Console.SetCursorPosition(x, y + 1);
             Console.WriteLine("          _____                    _____                    _____                    _____                    _____                    _____          \r\n");
             Console.SetCursorPosition(x, y + 2);
@@ -61,13 +69,10 @@ namespace Arcade
             Console.WriteLine("        \\::/    /                \\:|   |                  \\::/    /                \\::/    /                \\::/    /                \\::/    /        \r\n");
             Console.SetCursorPosition(x, y + 21);
             Console.WriteLine("         \\/____/                  \\|___|                   \\/____/                  \\/____/                  \\/____/                  \\/____/");
-        }
 
-        private static void PrintVersionText()
-        {
-            int x = 1;
-            int y = 40;
-
+            x = 1;
+            y = 40;
+            // Texto Versión
             Console.SetCursorPosition(x, y);
             Console.WriteLine("         __      __            __                __    __    _        \r\n");
             Console.SetCursorPosition(x, y + 1);
@@ -76,7 +81,7 @@ namespace Arcade
             Console.WriteLine("|_/ .  (__/ .  (__/ .  /     /__)   /     (_/  /__/  / \\   (__  /  /  ");
         }
 
-        private static void ArcadeWaitForKey()
+        static bool ArcadeWaitForKey()
         {
             int x = 15;
             int y = 27;
@@ -101,7 +106,7 @@ namespace Arcade
                 Console.WriteLine("    \\|__|     \\|__|\\|__|\\|_______|\\_________\\\\_________\\        \\|__|\\|__|\\|__| \\|__|\\____/ /            \\|__| \\|__|\\|_______|\\____/ /     \r\n");
                 Console.SetCursorPosition(x, y + 7);
                 Console.WriteLine("                                 \\|_________\\|_________|                            \\|____|/                                 \\|____|/  ");
-                
+
                 Thread.Sleep(2000);
 
                 Console.SetCursorPosition(x, y);
@@ -132,8 +137,7 @@ namespace Arcade
 
             } while (opc == ConsoleKey.Divide);
 
-            PrintArcadeText();
-
+            // Borra el texto de Versión
             Console.SetCursorPosition(1, 40);
             Console.Write(new string(' ', Console.WindowWidth));
             Console.SetCursorPosition(1, 41);
@@ -141,13 +145,15 @@ namespace Arcade
             Console.SetCursorPosition(1, 42);
             Console.Write(new string(' ', Console.WindowWidth));
 
-            TransicionSalidaArcade();
-            Thread.Sleep(10000);
+            return true;
 
-            MenuJuegos();
+            //TransicionSalidaArcade();
+            //Thread.Sleep(10000);
+            //MenuJuegos();
+
         }
 
-        private static void TransicionSalidaArcade()
+        static void TransicionSalidaArcade()
         {
             int x = 10;
             int limite = 43;
@@ -261,160 +267,6 @@ namespace Arcade
                     Console.WriteLine("         \\/____/                  \\|___|                   \\/____/                  \\/____/                  \\/____/                  \\/____/");
                 }
                 Thread.Sleep(30);
-                Console.SetCursorPosition(x, y + 1);
-                Console.Write(new string(' ', Console.WindowWidth));
-            }
-            MenuJuegos();
-        }
-
-        private static void MenuJuegos()
-        {
-            TransicionEntradaSpaceInvaders();
-
-            //ConsoleKey opc = ConsoleKey.Divide;
-
-            //Console.Clear();
-            //for (int i = 1; i > 2; i++)
-            //{
-            //    TransicionEntradaSpaceInvaders();
-            //    TransicionSalidaSpaceInvaders();
-            //    Thread.Sleep(1000);
-            //}
-        }
-
-        private static void PrintArrows()
-        {
-            // UP ARROW
-            Console.SetCursorPosition(25, 2);
-
-            // DOWN ARROW
-        }
-
-        private static void TransicionEntradaSpaceInvaders()
-        {
-            int x = 14;
-            int limite = 25;
-            ConsoleKeyInfo opc;
-
-            for (int y = 1; y < limite; y++)
-            {
-                if (y > 7)
-                {
-                    Console.SetCursorPosition(x, y - 7);
-                    Console.WriteLine(" ________  ________  ________  ________  _______           ___  ________   ___      ___ ________  ________  _______   ________  ________      \r\n");
-                }
-                if (y > 6)
-                {
-                    Console.SetCursorPosition(x, y - 6);
-                    Console.WriteLine("|\\   ____\\|\\   __  \\|\\   __  \\|\\   ____\\|\\  ___ \\         |\\  \\|\\   ___  \\|\\  \\    /  /|\\   __  \\|\\   ___ \\|\\  ___ \\ |\\   __  \\|\\   ____\\     \r\n");
-                }
-                if (y > 5)
-                {
-                    Console.SetCursorPosition(x, y + - 5);
-                    Console.WriteLine("\\ \\  \\___|\\ \\  \\|\\  \\ \\  \\|\\  \\ \\  \\___|\\ \\   __/|        \\ \\  \\ \\  \\\\ \\  \\ \\  \\  /  / | \\  \\|\\  \\ \\  \\_|\\ \\ \\   __/|\\ \\  \\|\\  \\ \\  \\___|_    \r\n");
-                }
-                if (y > 4)
-                {
-                    Console.SetCursorPosition(x, y - 4);
-                    Console.WriteLine(" \\ \\_____  \\ \\   ____\\ \\   __  \\ \\  \\    \\ \\  \\_|/__       \\ \\  \\ \\  \\\\ \\  \\ \\  \\/  / / \\ \\   __  \\ \\  \\ \\\\ \\ \\  \\_|/_\\ \\   _  _\\ \\_____  \\   \r\n");
-                }
-                if (y > 3)
-                {
-                    Console.SetCursorPosition(x, y - 3);
-                    Console.WriteLine("  \\|____|\\  \\ \\  \\___|\\ \\  \\ \\  \\ \\  \\____\\ \\  \\_|\\ \\       \\ \\  \\ \\  \\\\ \\  \\ \\    / /   \\ \\  \\ \\  \\ \\  \\_\\\\ \\ \\  \\_|\\ \\ \\  \\\\  \\\\|____|\\  \\  \r\n");
-                }
-                if (y > 2)
-                {
-                    Console.SetCursorPosition(x, y - 2);
-                    Console.WriteLine("    ____\\_\\  \\ \\__\\    \\ \\__\\ \\__\\ \\_______\\ \\_______\\       \\ \\__\\ \\__\\\\ \\__\\ \\__/ /     \\ \\__\\ \\__\\ \\_______\\ \\_______\\ \\__\\\\ _\\ ____\\_\\  \\ \r\n");
-                }
-                if (y > 1)
-                {
-                    Console.SetCursorPosition(x, y -1);
-                    Console.WriteLine("   |\\_________\\|__|     \\|__|\\|__|\\|_______|\\|_______|        \\|__|\\|__| \\|__|\\|__|/       \\|__|\\|__|\\|_______|\\|_______|\\|__|\\|__|\\_________\\\r\n");
-                }
-                if (y > 0)
-                {
-                    Console.SetCursorPosition(x, y);
-                    Console.WriteLine("   \\|_________|                                                                                                                   \\|_________|");
-                }
-                if (y > 8)
-                {
-                    Console.SetCursorPosition(x, y - 8);
-                    Console.Write(new string(' ', Console.WindowWidth));
-                }
-                Thread.Sleep(25);
-                //Borra la letra introducida
-                //Console.SetCursorPosition(x, y + 9);
-                //Console.Write(new string(' ', Console.WindowWidth));
-            }
-            
-            opc = Console.ReadKey();
-
-            switch(opc.Key)
-            {
-                case ConsoleKey.Enter:
-                    break;
-                case ConsoleKey.UpArrow:
-                    TransicionSalidaSpaceInvaders();
-                    TransicionEntradaSpaceInvaders();
-                    break;
-                case ConsoleKey.DownArrow:
-                    TransicionSalidaSpaceInvaders();
-                    TransicionEntradaSpaceInvaders();
-                    break;
-            }
-        }
-
-        private static void TransicionSalidaSpaceInvaders()
-        {
-            int x = 14;
-            int limite = 42;
-
-            for (int y = 16; y < limite; y++)
-            {
-                //TEXTO ARCADE
-                if (y + 1 < limite)
-                {
-                    Console.SetCursorPosition(x, y + 1);
-                    Console.WriteLine(" ________  ________  ________  ________  _______           ___  ________   ___      ___ ________  ________  _______   ________  ________      \r\n");
-                }
-                if (y + 2 < limite)
-                {
-                    Console.SetCursorPosition(x, y + 2);
-                    Console.WriteLine("|\\   ____\\|\\   __  \\|\\   __  \\|\\   ____\\|\\  ___ \\         |\\  \\|\\   ___  \\|\\  \\    /  /|\\   __  \\|\\   ___ \\|\\  ___ \\ |\\   __  \\|\\   ____\\     \r\n");
-                }
-                if (y + 3 < limite)
-                {
-                    Console.SetCursorPosition(x, y + 3);
-                    Console.WriteLine("\\ \\  \\___|\\ \\  \\|\\  \\ \\  \\|\\  \\ \\  \\___|\\ \\   __/|        \\ \\  \\ \\  \\\\ \\  \\ \\  \\  /  / | \\  \\|\\  \\ \\  \\_|\\ \\ \\   __/|\\ \\  \\|\\  \\ \\  \\___|_    \r\n");
-                }
-                if (y + 4 < limite)
-                {
-                    Console.SetCursorPosition(x, y + 4);
-                    Console.WriteLine(" \\ \\_____  \\ \\   ____\\ \\   __  \\ \\  \\    \\ \\  \\_|/__       \\ \\  \\ \\  \\\\ \\  \\ \\  \\/  / / \\ \\   __  \\ \\  \\ \\\\ \\ \\  \\_|/_\\ \\   _  _\\ \\_____  \\   \r\n");
-                }
-                if (y + 5 < limite)
-                {
-                    Console.SetCursorPosition(x, y + 5);
-                    Console.WriteLine("  \\|____|\\  \\ \\  \\___|\\ \\  \\ \\  \\ \\  \\____\\ \\  \\_|\\ \\       \\ \\  \\ \\  \\\\ \\  \\ \\    / /   \\ \\  \\ \\  \\ \\  \\_\\\\ \\ \\  \\_|\\ \\ \\  \\\\  \\\\|____|\\  \\  \r\n");
-                }
-                if (y + 6 < limite)
-                {
-                    Console.SetCursorPosition(x, y + 6);
-                    Console.WriteLine("    ____\\_\\  \\ \\__\\    \\ \\__\\ \\__\\ \\_______\\ \\_______\\       \\ \\__\\ \\__\\\\ \\__\\ \\__/ /     \\ \\__\\ \\__\\ \\_______\\ \\_______\\ \\__\\\\ _\\ ____\\_\\  \\ \r\n");
-                }
-                if (y + 7 < limite)
-                {
-                    Console.SetCursorPosition(x, y + 7);
-                    Console.WriteLine("   |\\_________\\|__|     \\|__|\\|__|\\|_______|\\|_______|        \\|__|\\|__| \\|__|\\|__|/       \\|__|\\|__|\\|_______|\\|_______|\\|__|\\|__|\\_________\\\r\n");
-                }
-                if (y + 8 < limite)
-                {
-                    Console.SetCursorPosition(x, y + 8);
-                    Console.WriteLine("   \\|_________|                                                                                                                   \\|_________|");
-                }
-                Thread.Sleep(25);
                 Console.SetCursorPosition(x, y + 1);
                 Console.Write(new string(' ', Console.WindowWidth));
             }
