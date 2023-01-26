@@ -8,11 +8,12 @@ namespace Arcade
         {
             Console.CursorVisible = false;
             Console.SetWindowSize(170, 43);
-            PrintArcade();
-            PrintVersion();
+
+            PrintArcadeText();
+            PrintVersionText();
             ArcadeWaitForKey();
         }
-        private static void PrintArcade()
+        private static void PrintArcadeText()
         {
             int x = 10;
             int y = 1;
@@ -61,7 +62,8 @@ namespace Arcade
             Console.SetCursorPosition(x, y + 21);
             Console.WriteLine("         \\/____/                  \\|___|                   \\/____/                  \\/____/                  \\/____/                  \\/____/");
         }
-        private static void PrintVersion()
+
+        private static void PrintVersionText()
         {
             int x = 1;
             int y = 40;
@@ -74,7 +76,78 @@ namespace Arcade
             Console.WriteLine("|_/ .  (__/ .  (__/ .  /     /__)   /     (_/  /__/  / \\   (__  /  /  ");
         }
 
-        private static void TransicionArcade()
+        private static void ArcadeWaitForKey()
+        {
+            int x = 15;
+            int y = 27;
+            ConsoleKey opc = ConsoleKey.Divide;
+
+            do
+            {
+                //PRESS ANY KEY
+                Console.SetCursorPosition(x, y);
+                Console.WriteLine(" ________  ________  _______   ________   ________           ________  ________       ___    ___      ___  __    _______       ___    ___  \r\n");
+                Console.SetCursorPosition(x, y + 1);
+                Console.WriteLine("|\\   __  \\|\\   __  \\|\\  ___ \\ |\\   ____\\ |\\   ____\\         |\\   __  \\|\\   ___  \\    |\\  \\  /  /|    |\\  \\|\\  \\ |\\  ___ \\     |\\  \\  /  /| \r\n");
+                Console.SetCursorPosition(x, y + 2);
+                Console.WriteLine("\\ \\  \\|\\  \\ \\  \\|\\  \\ \\   __/|\\ \\  \\___|_\\ \\  \\___|_        \\ \\  \\|\\  \\ \\  \\\\ \\  \\   \\ \\  \\/  / /    \\ \\  \\/  /|\\ \\   __/|    \\ \\  \\/  / / \r\n");
+                Console.SetCursorPosition(x, y + 3);
+                Console.WriteLine(" \\ \\   ____\\ \\   _  _\\ \\  \\_|/_\\ \\_____  \\\\ \\_____  \\        \\ \\   __  \\ \\  \\\\ \\  \\   \\ \\    / /      \\ \\   ___  \\ \\  \\_|/__   \\ \\    / /  \r\n");
+                Console.SetCursorPosition(x, y + 4);
+                Console.WriteLine("  \\ \\  \\___|\\ \\  \\\\  \\\\ \\  \\_|\\ \\|____|\\  \\\\|____|\\  \\        \\ \\  \\ \\  \\ \\  \\\\ \\  \\   \\/   / /        \\ \\  \\\\ \\  \\ \\  \\_|\\ \\   \\/   / /   \r\n");
+                Console.SetCursorPosition(x, y + 5);
+                Console.WriteLine("   \\ \\__\\    \\ \\__\\\\ _\\\\ \\_______\\____\\_\\  \\ ____\\_\\  \\        \\ \\__\\ \\__\\ \\__\\\\ \\__\\__/   / /          \\ \\__\\\\ \\__\\ \\_______\\__/   / /    \r\n");
+                Console.SetCursorPosition(x, y + 6);
+                Console.WriteLine("    \\|__|     \\|__|\\|__|\\|_______|\\_________\\\\_________\\        \\|__|\\|__|\\|__| \\|__|\\____/ /            \\|__| \\|__|\\|_______|\\____/ /     \r\n");
+                Console.SetCursorPosition(x, y + 7);
+                Console.WriteLine("                                 \\|_________\\|_________|                            \\|____|/                                 \\|____|/  ");
+                
+                Thread.Sleep(2000);
+
+                Console.SetCursorPosition(x, y);
+                Console.Write(new string(' ', Console.WindowWidth));
+                Console.SetCursorPosition(x, y + 1);
+                Console.Write(new string(' ', Console.WindowWidth));
+                Console.SetCursorPosition(x, y + 2);
+                Console.Write(new string(' ', Console.WindowWidth));
+                Console.SetCursorPosition(x, y + 3);
+                Console.Write(new string(' ', Console.WindowWidth));
+                Console.SetCursorPosition(x, y + 4);
+                Console.Write(new string(' ', Console.WindowWidth));
+                Console.SetCursorPosition(x, y + 5);
+                Console.Write(new string(' ', Console.WindowWidth));
+                Console.SetCursorPosition(x, y + 6);
+                Console.Write(new string(' ', Console.WindowWidth));
+                Console.SetCursorPosition(x, y + 7);
+                Console.Write(new string(' ', Console.WindowWidth));
+
+                Thread.Sleep(1000);
+
+                // Lee si se ha pulsado una tecla sin parar el bucle
+                if (Console.KeyAvailable)
+                {
+                    var key = Console.ReadKey(true);
+                    opc = key.Key;
+                }
+
+            } while (opc == ConsoleKey.Divide);
+
+            PrintArcadeText();
+
+            Console.SetCursorPosition(1, 40);
+            Console.Write(new string(' ', Console.WindowWidth));
+            Console.SetCursorPosition(1, 41);
+            Console.Write(new string(' ', Console.WindowWidth));
+            Console.SetCursorPosition(1, 42);
+            Console.Write(new string(' ', Console.WindowWidth));
+
+            TransicionSalidaArcade();
+            Thread.Sleep(10000);
+
+            MenuJuegos();
+        }
+
+        private static void TransicionSalidaArcade()
         {
             int x = 10;
             int limite = 43;
@@ -194,77 +267,6 @@ namespace Arcade
             MenuJuegos();
         }
 
-        private static void ArcadeWaitForKey()
-        {
-            int x = 15;
-            int y = 27;
-            ConsoleKey opc = ConsoleKey.Divide;
-
-            do
-            {
-                //PRESS ANY KEY
-                Console.SetCursorPosition(x, y);
-                Console.WriteLine(" ________  ________  _______   ________   ________           ________  ________       ___    ___      ___  __    _______       ___    ___  \r\n");
-                Console.SetCursorPosition(x, y + 1);
-                Console.WriteLine("|\\   __  \\|\\   __  \\|\\  ___ \\ |\\   ____\\ |\\   ____\\         |\\   __  \\|\\   ___  \\    |\\  \\  /  /|    |\\  \\|\\  \\ |\\  ___ \\     |\\  \\  /  /| \r\n");
-                Console.SetCursorPosition(x, y + 2);
-                Console.WriteLine("\\ \\  \\|\\  \\ \\  \\|\\  \\ \\   __/|\\ \\  \\___|_\\ \\  \\___|_        \\ \\  \\|\\  \\ \\  \\\\ \\  \\   \\ \\  \\/  / /    \\ \\  \\/  /|\\ \\   __/|    \\ \\  \\/  / / \r\n");
-                Console.SetCursorPosition(x, y + 3);
-                Console.WriteLine(" \\ \\   ____\\ \\   _  _\\ \\  \\_|/_\\ \\_____  \\\\ \\_____  \\        \\ \\   __  \\ \\  \\\\ \\  \\   \\ \\    / /      \\ \\   ___  \\ \\  \\_|/__   \\ \\    / /  \r\n");
-                Console.SetCursorPosition(x, y + 4);
-                Console.WriteLine("  \\ \\  \\___|\\ \\  \\\\  \\\\ \\  \\_|\\ \\|____|\\  \\\\|____|\\  \\        \\ \\  \\ \\  \\ \\  \\\\ \\  \\   \\/   / /        \\ \\  \\\\ \\  \\ \\  \\_|\\ \\   \\/   / /   \r\n");
-                Console.SetCursorPosition(x, y + 5);
-                Console.WriteLine("   \\ \\__\\    \\ \\__\\\\ _\\\\ \\_______\\____\\_\\  \\ ____\\_\\  \\        \\ \\__\\ \\__\\ \\__\\\\ \\__\\__/   / /          \\ \\__\\\\ \\__\\ \\_______\\__/   / /    \r\n");
-                Console.SetCursorPosition(x, y + 6);
-                Console.WriteLine("    \\|__|     \\|__|\\|__|\\|_______|\\_________\\\\_________\\        \\|__|\\|__|\\|__| \\|__|\\____/ /            \\|__| \\|__|\\|_______|\\____/ /     \r\n");
-                Console.SetCursorPosition(x, y + 7);
-                Console.WriteLine("                                 \\|_________\\|_________|                            \\|____|/                                 \\|____|/  ");
-                
-                Thread.Sleep(2000);
-
-                Console.SetCursorPosition(x, y);
-                Console.Write(new string(' ', Console.WindowWidth));
-                Console.SetCursorPosition(x, y + 1);
-                Console.Write(new string(' ', Console.WindowWidth));
-                Console.SetCursorPosition(x, y + 2);
-                Console.Write(new string(' ', Console.WindowWidth));
-                Console.SetCursorPosition(x, y + 3);
-                Console.Write(new string(' ', Console.WindowWidth));
-                Console.SetCursorPosition(x, y + 4);
-                Console.Write(new string(' ', Console.WindowWidth));
-                Console.SetCursorPosition(x, y + 5);
-                Console.Write(new string(' ', Console.WindowWidth));
-                Console.SetCursorPosition(x, y + 6);
-                Console.Write(new string(' ', Console.WindowWidth));
-                Console.SetCursorPosition(x, y + 7);
-                Console.Write(new string(' ', Console.WindowWidth));
-
-                Thread.Sleep(1000);
-
-                // Lee si se ha pulsado una tecla sin parar el bucle
-                if (Console.KeyAvailable)
-                {
-                    var key = Console.ReadKey(true);
-                    opc = key.Key;
-                }
-
-            } while (opc == ConsoleKey.Divide);
-
-            PrintArcade();
-
-            Console.SetCursorPosition(1, 40);
-            Console.Write(new string(' ', Console.WindowWidth));
-            Console.SetCursorPosition(1, 41);
-            Console.Write(new string(' ', Console.WindowWidth));
-            Console.SetCursorPosition(1, 42);
-            Console.Write(new string(' ', Console.WindowWidth));
-
-            TransicionArcade();
-            Thread.Sleep(10000);
-
-            MenuJuegos();
-        }
-
         private static void MenuJuegos()
         {
             TransicionEntradaSpaceInvaders();
@@ -278,6 +280,14 @@ namespace Arcade
             //    TransicionSalidaSpaceInvaders();
             //    Thread.Sleep(1000);
             //}
+        }
+
+        private static void PrintArrows()
+        {
+            // UP ARROW
+            Console.SetCursorPosition(25, 2);
+
+            // DOWN ARROW
         }
 
         private static void TransicionEntradaSpaceInvaders()
