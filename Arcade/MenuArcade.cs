@@ -11,33 +11,43 @@ namespace Arcade
 
     public class MenuArcade
     {
-        public int juegos { get; set; }
-        public int opcMenu { get; set; }
+        public int _juegos { get; set; }
+        public int _opcMenu { get; set; }
+        public bool _enter { get; set; }
 
         public MenuArcade()
         {
-            juegos = 2;
-            opcMenu = 0;
+            _juegos = 2;
+            _opcMenu = 0;
+            _enter = false;
         }
 
         public void MenuJuegos()
         {
-            opcMenu = 0;
+            _opcMenu = 0;
 
             ClearArrows();
             TransicionEntradaSpaceInvaders();
             PrintArrows();
-            WaitForKey();
 
-            switch (opcMenu)
+            do
             {
-                case 0:
+                WaitForKey();
 
-                    break;
-                case 1:
+                switch (_opcMenu)
+                {
+                    case 0:
 
-                    break;
-            }
+                        break;
+                    case 1:
+
+                        break;
+                }
+
+            } while (!_enter);
+
+            //TODO
+            //Cuando pulsen enter, (mirar como hacer lista o algo con los juegos) usar _opcMenu para ejecutar el juego seleccionado
         }
 
         public void WaitForKey()
@@ -45,9 +55,13 @@ namespace Arcade
             ConsoleKey key;
             key = Console.ReadKey().Key;
 
-            if (key == ConsoleKey.UpArrow && opcMenu < juegos)
+            if (key == ConsoleKey.UpArrow && _opcMenu > 0)
             {
-
+                _opcMenu--;
+            }
+            else if (key == ConsoleKey.DownArrow && _opcMenu > _juegos - 1)
+            {
+                _opcMenu++;
             }
         }
 
