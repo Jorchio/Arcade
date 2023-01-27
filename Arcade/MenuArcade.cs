@@ -6,28 +6,52 @@ using System.Threading.Tasks;
 
 namespace Arcade
 {
+    //NOTAS
+    //FLECHA HACIA ABAJO ++ Y FLECHA HACIA ARRIBA --
+
     public class MenuArcade
     {
-        public int indexMenu;
+        public int juegos { get; set; }
+        public int opcMenu { get; set; }
 
-        public  void MenuJuegos()
+        public MenuArcade()
         {
+            juegos = 2;
+            opcMenu = 0;
+        }
+
+        public void MenuJuegos()
+        {
+            opcMenu = 0;
+
             ClearArrows();
             TransicionEntradaSpaceInvaders();
             PrintArrows();
+            WaitForKey();
 
-            //ConsoleKey opc = ConsoleKey.Divide;
+            switch (opcMenu)
+            {
+                case 0:
 
-            //Console.Clear();
-            //for (int i = 1; i > 2; i++)
-            //{
-            //    TransicionEntradaSpaceInvaders();
-            //    TransicionSalidaSpaceInvaders();
-            //    Thread.Sleep(1000);
-            //}
+                    break;
+                case 1:
+
+                    break;
+            }
         }
 
-        public  void PrintArrows()
+        public void WaitForKey()
+        {
+            ConsoleKey key;
+            key = Console.ReadKey().Key;
+
+            if (key == ConsoleKey.UpArrow && opcMenu < juegos)
+            {
+
+            }
+        }
+
+        public void PrintArrows()
         {
             // UP ARROW
             int x = 80;
@@ -147,7 +171,7 @@ namespace Arcade
             Console.Write(new string(' ', Console.WindowWidth));
         }
 
-        public  void TransicionEntradaSpaceInvaders()
+        public void TransicionEntradaSpaceInvaders()
         {
             int x = 14;
             int limite = 25;
@@ -201,6 +225,7 @@ namespace Arcade
                     Console.Write(new string(' ', Console.WindowWidth));
                 }
                 Thread.Sleep(25);
+
                 //Borra la letra introducida
                 //Console.SetCursorPosition(x, y + 9);
                 //Console.Write(new string(' ', Console.WindowWidth));
