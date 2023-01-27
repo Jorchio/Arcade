@@ -26,9 +26,9 @@ namespace Arcade
         {
             _opcMenu = 0;
 
-            ClearArrows();
+            ClearUpArrow();
             TransicionEntradaSpaceInvaders();
-            PrintArrows();
+            PrintUpArrow();
 
             do
             {
@@ -65,7 +65,7 @@ namespace Arcade
             }
         }
 
-        public void PrintArrows()
+        public void PrintUpArrow()
         {
             // UP ARROW
             int x = 80;
@@ -95,7 +95,10 @@ namespace Arcade
             Console.WriteLine("     . :\r\n");
             Console.SetCursorPosition(x, 12);
             Console.WriteLine("   .   .\r\n");
+        }
 
+        public void PrintDownArrow()
+        {
             // DOWN ARROW
             Console.SetCursorPosition(x, 29);
             Console.WriteLine("   . ;.\r\n");
@@ -125,64 +128,26 @@ namespace Arcade
             Console.WriteLine("    ':`");
         }
 
-        public void ClearArrows()
+        public void ClearUpArrow()
         {
             // UP ARROW
             int x = 80;
-            Console.SetCursorPosition(x, 0);
-            Console.Write(new string(' ', Console.WindowWidth));
-            Console.SetCursorPosition(x, 1);
-            Console.Write(new string(' ', Console.WindowWidth));
-            Console.SetCursorPosition(x, 2);
-            Console.Write(new string(' ', Console.WindowWidth));
-            Console.SetCursorPosition(x, 3);
-            Console.Write(new string(' ', Console.WindowWidth));
-            Console.SetCursorPosition(x, 4);
-            Console.Write(new string(' ', Console.WindowWidth));
-            Console.SetCursorPosition(x, 5);
-            Console.Write(new string(' ', Console.WindowWidth));
-            Console.SetCursorPosition(x, 6);
-            Console.Write(new string(' ', Console.WindowWidth));
-            Console.SetCursorPosition(x, 7);
-            Console.Write(new string(' ', Console.WindowWidth));
-            Console.SetCursorPosition(x, 8);
-            Console.Write(new string(' ', Console.WindowWidth));
-            Console.SetCursorPosition(x, 9);
-            Console.Write(new string(' ', Console.WindowWidth));
-            Console.SetCursorPosition(x, 10);
-            Console.Write(new string(' ', Console.WindowWidth));
-            Console.SetCursorPosition(x, 11);
-            Console.Write(new string(' ', Console.WindowWidth));
-            Console.SetCursorPosition(x, 12);
-            Console.Write(new string(' ', Console.WindowWidth));
+            for (int i = 0; i < 13; i++)
+            {
+                Console.SetCursorPosition(x, i);
+                Console.Write(new string(' ', Console.WindowWidth));
+            }
+        }
 
+        public void ClearDownArrow()
+        {
             // DOWN ARROW
-            Console.SetCursorPosition(x, 29);
-            Console.Write(new string(' ', Console.WindowWidth));
-            Console.SetCursorPosition(x, 30);
-            Console.Write(new string(' ', Console.WindowWidth));
-            Console.SetCursorPosition(x, 31);
-            Console.Write(new string(' ', Console.WindowWidth));
-            Console.SetCursorPosition(x, 32);
-            Console.Write(new string(' ', Console.WindowWidth));
-            Console.SetCursorPosition(x, 33);
-            Console.Write(new string(' ', Console.WindowWidth));
-            Console.SetCursorPosition(x, 34);
-            Console.Write(new string(' ', Console.WindowWidth));
-            Console.SetCursorPosition(x, 35);
-            Console.Write(new string(' ', Console.WindowWidth));
-            Console.SetCursorPosition(x, 36);
-            Console.Write(new string(' ', Console.WindowWidth));
-            Console.SetCursorPosition(x, 37);
-            Console.Write(new string(' ', Console.WindowWidth));
-            Console.SetCursorPosition(x, 38);
-            Console.Write(new string(' ', Console.WindowWidth));
-            Console.SetCursorPosition(x, 39);
-            Console.Write(new string(' ', Console.WindowWidth));
-            Console.SetCursorPosition(x, 40);
-            Console.Write(new string(' ', Console.WindowWidth));
-            Console.SetCursorPosition(x, 41);
-            Console.Write(new string(' ', Console.WindowWidth));
+            int x = 80;
+            for (int i = 29; i < 42; i++)
+            {
+                Console.SetCursorPosition(x, i);
+                Console.Write(new string(' ', Console.WindowWidth));
+            }
         }
 
         public void TransicionEntradaSpaceInvaders()
@@ -244,7 +209,7 @@ namespace Arcade
                 //Console.SetCursorPosition(x, y + 9);
                 //Console.Write(new string(' ', Console.WindowWidth));
             }
-                PrintArrows();
+                PrintUpArrow();
 
             opc = Console.ReadKey();
 
@@ -253,12 +218,12 @@ namespace Arcade
                 case ConsoleKey.Enter:
                     break;
                 case ConsoleKey.UpArrow:
-                    ClearArrows();
+                    ClearUpArrow();
                     TransicionSalidaSpaceInvaders();
                     TransicionEntradaSpaceInvaders();
                     break;
                 case ConsoleKey.DownArrow:
-                    ClearArrows();
+                    ClearUpArrow();
                     TransicionSalidaSpaceInvaders();
                     TransicionEntradaSpaceInvaders();
                     break;
