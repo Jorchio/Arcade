@@ -8,6 +8,8 @@ namespace Arcade
 {
     public class MenuArcade
     {
+        public int indexMenu;
+
         public  void MenuJuegos()
         {
             ClearArrows();
@@ -202,7 +204,6 @@ namespace Arcade
                 //Borra la letra introducida
                 //Console.SetCursorPosition(x, y + 9);
                 //Console.Write(new string(' ', Console.WindowWidth));
-
             }
                 PrintArrows();
 
@@ -276,7 +277,7 @@ namespace Arcade
                 Thread.Sleep(25);
                 Console.SetCursorPosition(x, y + 1);
                 Console.Write(new string(' ', Console.WindowWidth));
-                PrintArrows();
+                //PrintArrows();
             }
         }
     }
