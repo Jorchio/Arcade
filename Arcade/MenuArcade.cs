@@ -14,6 +14,7 @@ namespace Arcade
         public int _juegos { get; set; }
         public int _opcMenu { get; set; }
         public bool _enter { get; set; }
+        public string? _direccionTransicion { get; set; }
 
         public MenuArcade()
         {
@@ -26,23 +27,47 @@ namespace Arcade
         {
             _opcMenu = 0;
 
-            ClearUpArrow();
             TransicionEntradaSpaceInvaders();
-            PrintUpArrow();
+            PrintDownArrow();
 
             do
             {
                 WaitForKey();
 
-                switch (_opcMenu)
+                if (_direccionTransicion == "up")
                 {
-                    case 0:
+                    switch (_opcMenu)
+                    {
+                        case 0:
+                            ClearBothArrows();
+                            TransicionSalidaSpaceInvaders();
+                            TransicionEntradaSpaceInvaders();
 
-                        break;
-                    case 1:
+                            break;
+                        case 1:
+                            ClearBothArrows();
+                            TransicionSalidaSpaceInvaders();
 
-                        break;
+                            break;
+                    }
                 }
+                else if (_direccionTransicion == "down")
+                {
+                    switch (_opcMenu)
+                    {
+                        case 0:
+                            ClearBothArrows();
+                            TransicionSalidaSpaceInvaders();
+                            TransicionEntradaSpaceInvaders();
+
+                            break;
+                        case 1:
+                            ClearBothArrows();
+                            TransicionSalidaSpaceInvaders();
+
+                            break;
+                    }
+                }  
 
             } while (!_enter);
 
@@ -52,17 +77,28 @@ namespace Arcade
 
         public void WaitForKey()
         {
-            ConsoleKey key;
-            key = Console.ReadKey().Key;
+            ConsoleKeyInfo key;
 
-            if (key == ConsoleKey.UpArrow && _opcMenu > 0)
+            do
             {
-                _opcMenu--;
-            }
-            else if (key == ConsoleKey.DownArrow && _opcMenu > _juegos - 1)
-            {
-                _opcMenu++;
-            }
+                key = Console.ReadKey();
+
+                if (key.Key == ConsoleKey.UpArrow && _opcMenu > 0)
+                {
+                    _opcMenu--;
+                    _direccionTransicion = "up";
+                }
+                else if (key.Key == ConsoleKey.DownArrow && _opcMenu > _juegos - 1)
+                {
+                    _opcMenu++;
+                    _direccionTransicion = "down";
+                }
+                else if (key.Key == ConsoleKey.Enter)
+                {
+                    _enter = true;
+                }
+
+            } while (key.Key != ConsoleKey.UpArrow || key.Key != ConsoleKey.DownArrow || key.Key != ConsoleKey.Enter);   
         }
 
         public void PrintUpArrow()
@@ -100,6 +136,7 @@ namespace Arcade
         public void PrintDownArrow()
         {
             // DOWN ARROW
+            int x = 80;
             Console.SetCursorPosition(x, 29);
             Console.WriteLine("   . ;.\r\n");
             Console.SetCursorPosition(x, 30);
@@ -128,7 +165,67 @@ namespace Arcade
             Console.WriteLine("    ':`");
         }
 
-        public void ClearUpArrow()
+        public void PrintBothArrows()
+        {
+            // UP ARROW
+            int x = 80;
+            Console.SetCursorPosition(x, 0);
+            Console.WriteLine("     .\r\n");
+            Console.SetCursorPosition(x, 1);
+            Console.WriteLine("   .:;:.\r\n");
+            Console.SetCursorPosition(x, 2);
+            Console.WriteLine(" .:;;;;;:.\r\n");
+            Console.SetCursorPosition(x, 3);
+            Console.WriteLine("   ;;;;;\r\n");
+            Console.SetCursorPosition(x, 4);
+            Console.WriteLine("   ;;;;;\r\n");
+            Console.SetCursorPosition(x, 5);
+            Console.WriteLine("   ;;;;;\r\n");
+            Console.SetCursorPosition(x, 6);
+            Console.WriteLine("   ;;;;;\r\n");
+            Console.SetCursorPosition(x, 7);
+            Console.WriteLine("   ;:;;;\r\n");
+            Console.SetCursorPosition(x, 8);
+            Console.WriteLine("   : ;;;\r\n");
+            Console.SetCursorPosition(x, 9);
+            Console.WriteLine("     ;:;\r\n");
+            Console.SetCursorPosition(x, 10);
+            Console.WriteLine("   . :.;\r\n");
+            Console.SetCursorPosition(x, 11);
+            Console.WriteLine("     . :\r\n");
+            Console.SetCursorPosition(x, 12);
+            Console.WriteLine("   .   .\r\n");
+
+            // DOWN ARROW
+            Console.SetCursorPosition(x, 29);
+            Console.WriteLine("   . ;.\r\n");
+            Console.SetCursorPosition(x, 30);
+            Console.WriteLine("    .;\r\n");
+            Console.SetCursorPosition(x, 31);
+            Console.WriteLine("     ;;.\r\n");
+            Console.SetCursorPosition(x, 32);
+            Console.WriteLine("   ;.;;\r\n");
+            Console.SetCursorPosition(x, 33);
+            Console.WriteLine("   ;;;;.\r\n");
+            Console.SetCursorPosition(x, 34);
+            Console.WriteLine("   ;;;;;\r\n");
+            Console.SetCursorPosition(x, 35);
+            Console.WriteLine("   ;;;;;\r\n");
+            Console.SetCursorPosition(x, 36);
+            Console.WriteLine("   ;;;;;\r\n");
+            Console.SetCursorPosition(x, 37);
+            Console.WriteLine("   ;;;;;\r\n");
+            Console.SetCursorPosition(x, 38);
+            Console.WriteLine("   ;;;;;\r\n");
+            Console.SetCursorPosition(x, 39);
+            Console.WriteLine(" ..;;;;;..\r\n");
+            Console.SetCursorPosition(x, 40);
+            Console.WriteLine("  ':::::'\r\n");
+            Console.SetCursorPosition(x, 41);
+            Console.WriteLine("    ':`");
+        }
+
+        public void ClearBothArrows()
         {
             // UP ARROW
             int x = 80;
@@ -137,12 +234,8 @@ namespace Arcade
                 Console.SetCursorPosition(x, i);
                 Console.Write(new string(' ', Console.WindowWidth));
             }
-        }
 
-        public void ClearDownArrow()
-        {
             // DOWN ARROW
-            int x = 80;
             for (int i = 29; i < 42; i++)
             {
                 Console.SetCursorPosition(x, i);
@@ -154,7 +247,7 @@ namespace Arcade
         {
             int x = 14;
             int limite = 25;
-            ConsoleKeyInfo opc;
+            //ConsoleKeyInfo opc;
 
             for (int y = 1; y < limite; y++)
             {
@@ -209,25 +302,24 @@ namespace Arcade
                 //Console.SetCursorPosition(x, y + 9);
                 //Console.Write(new string(' ', Console.WindowWidth));
             }
-                PrintUpArrow();
 
-            opc = Console.ReadKey();
+            //opc = Console.ReadKey();
 
-            switch (opc.Key)
-            {
-                case ConsoleKey.Enter:
-                    break;
-                case ConsoleKey.UpArrow:
-                    ClearUpArrow();
-                    TransicionSalidaSpaceInvaders();
-                    TransicionEntradaSpaceInvaders();
-                    break;
-                case ConsoleKey.DownArrow:
-                    ClearUpArrow();
-                    TransicionSalidaSpaceInvaders();
-                    TransicionEntradaSpaceInvaders();
-                    break;
-            }
+            //switch (opc.Key)
+            //{
+            //    case ConsoleKey.Enter:
+            //        break;
+            //    case ConsoleKey.UpArrow:
+            //        ClearUpArrow();
+            //        TransicionSalidaSpaceInvaders();
+            //        TransicionEntradaSpaceInvaders();
+            //        break;
+            //    case ConsoleKey.DownArrow:
+            //        ClearUpArrow();
+            //        TransicionSalidaSpaceInvaders();
+            //        TransicionEntradaSpaceInvaders();
+            //        break;
+            //}
         }
 
         public  void TransicionSalidaSpaceInvaders()
