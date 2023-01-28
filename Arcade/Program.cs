@@ -17,7 +17,7 @@ namespace Arcade
 
             if (opc)
             {
-                TransicionSalidaArcade();
+                ArcadeExitTransition();
                 menu.MenuJuegos();
             }
         }
@@ -153,7 +153,7 @@ namespace Arcade
 
         }
 
-        static void TransicionSalidaArcade()
+        static void ArcadeExitTransition()
         {
             int x = 10;
             int limite = 43;
