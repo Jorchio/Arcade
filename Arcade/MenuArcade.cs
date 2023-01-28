@@ -356,20 +356,67 @@ namespace Arcade
                     Console.Write(new string(' ', Console.WindowWidth));
                 }
             }
+            else if (startingPosition == "middle" && direction == "up")
+            {
+                x = 14;
+                limite = 25;
+
+                for (int y = 1; y < limite; y++)
+                {
+                    if (y > 7)
+                    {
+                        Console.SetCursorPosition(x, y - 7);
+                        Console.WriteLine(" ________  ________  ________  ________  _______           ___  ________   ___      ___ ________  ________  _______   ________  ________      \r\n");
+                    }
+                    if (y > 6)
+                    {
+                        Console.SetCursorPosition(x, y - 6);
+                        Console.WriteLine("|\\   ____\\|\\   __  \\|\\   __  \\|\\   ____\\|\\  ___ \\         |\\  \\|\\   ___  \\|\\  \\    /  /|\\   __  \\|\\   ___ \\|\\  ___ \\ |\\   __  \\|\\   ____\\     \r\n");
+                    }
+                    if (y > 5)
+                    {
+                        Console.SetCursorPosition(x, y + -5);
+                        Console.WriteLine("\\ \\  \\___|\\ \\  \\|\\  \\ \\  \\|\\  \\ \\  \\___|\\ \\   __/|        \\ \\  \\ \\  \\\\ \\  \\ \\  \\  /  / | \\  \\|\\  \\ \\  \\_|\\ \\ \\   __/|\\ \\  \\|\\  \\ \\  \\___|_    \r\n");
+                    }
+                    if (y > 4)
+                    {
+                        Console.SetCursorPosition(x, y - 4);
+                        Console.WriteLine(" \\ \\_____  \\ \\   ____\\ \\   __  \\ \\  \\    \\ \\  \\_|/__       \\ \\  \\ \\  \\\\ \\  \\ \\  \\/  / / \\ \\   __  \\ \\  \\ \\\\ \\ \\  \\_|/_\\ \\   _  _\\ \\_____  \\   \r\n");
+                    }
+                    if (y > 3)
+                    {
+                        Console.SetCursorPosition(x, y - 3);
+                        Console.WriteLine("  \\|____|\\  \\ \\  \\___|\\ \\  \\ \\  \\ \\  \\____\\ \\  \\_|\\ \\       \\ \\  \\ \\  \\\\ \\  \\ \\    / /   \\ \\  \\ \\  \\ \\  \\_\\\\ \\ \\  \\_|\\ \\ \\  \\\\  \\\\|____|\\  \\  \r\n");
+                    }
+                    if (y > 2)
+                    {
+                        Console.SetCursorPosition(x, y - 2);
+                        Console.WriteLine("    ____\\_\\  \\ \\__\\    \\ \\__\\ \\__\\ \\_______\\ \\_______\\       \\ \\__\\ \\__\\\\ \\__\\ \\__/ /     \\ \\__\\ \\__\\ \\_______\\ \\_______\\ \\__\\\\ _\\ ____\\_\\  \\ \r\n");
+                    }
+                    if (y > 1)
+                    {
+                        Console.SetCursorPosition(x, y - 1);
+                        Console.WriteLine("   |\\_________\\|__|     \\|__|\\|__|\\|_______|\\|_______|        \\|__|\\|__| \\|__|\\|__|/       \\|__|\\|__|\\|_______|\\|_______|\\|__|\\|__|\\_________\\\r\n");
+                    }
+                    if (y > 0)
+                    {
+                        Console.SetCursorPosition(x, y);
+                        Console.WriteLine("   \\|_________|                                                                                                                   \\|_________|");
+                    }
+                    if (y > 8)
+                    {
+                        Console.SetCursorPosition(x, y - 8);
+                        Console.Write(new string(' ', Console.WindowWidth));
+                    }
+                    Thread.Sleep(25);
+                }
+            }
             else if (startingPosition == "bottom" && direction == "up")
             {
 
             }
-            else if (startingPosition == "middle" && direction == "up")
-            {
-
-            }
         }
 
-        public  void TransicionSalidaSpaceInvaders(string direction)
-        {
-            
-        }
 
         public void BreakoutTransition(string direction, string startingPosition)
         {
