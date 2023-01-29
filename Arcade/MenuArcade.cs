@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -78,7 +79,6 @@ namespace Arcade
                             ComingSoonTransition("top", "down");
                             PrintUpArrow();
                             break;
-
                     }
                 }  
 
@@ -86,6 +86,19 @@ namespace Arcade
 
             //TODO
             //Cuando pulsen enter, (mirar como hacer lista o algo con los juegos) usar _opcMenu para ejecutar el juego seleccionado
+
+            if (_opcMenu == 0)
+            {
+                
+            }
+            else if (_opcMenu == 1)
+            {
+
+            }
+            else if (_opcMenu == 2)
+            {
+
+            }
         }
 
         public void WaitForKey()
