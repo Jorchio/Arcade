@@ -18,7 +18,7 @@ namespace Arcade
 
         public MenuArcade()
         {
-            _juegos = 2;
+            _juegos = 3;
             _opcMenu = 0;
             _enter = false;
         }
@@ -28,13 +28,14 @@ namespace Arcade
             _opcMenu = 0;
 
             SpaceInvadersTransition("top", "down");
-            Thread.Sleep(3000);
-            SpaceInvadersTransition("middle", "down");
-            Thread.Sleep(3000);
-            SpaceInvadersTransition("bottom", "up");
-            Thread.Sleep(3000);
-            SpaceInvadersTransition("middle", "up");
-            Thread.Sleep(3000);
+            //Thread.Sleep(3000);
+            //TEST
+            ////SpaceInvadersTransition("middle", "down");
+            ////Thread.Sleep(3000);
+            ////SpaceInvadersTransition("bottom", "up");
+            ////Thread.Sleep(3000);
+            //SpaceInvadersTransition("middle", "up");
+            //Thread.Sleep(3000);
 
 
             PrintDownArrow();
@@ -49,32 +50,35 @@ namespace Arcade
                     {
                         case 0:
                             ClearBothArrows();
-                            BreakoutTransition("middle", "up");
+                            ComingSoonTransition("middle", "up");
                             SpaceInvadersTransition("bottom", "up");
                             PrintDownArrow();                            
                             break;
-                        //case 1:
-                        //    ClearBothArrows();
-
-                        //    PrintUpArrow();
-                        //    break;
+                        case 1:
+                            ClearBothArrows();
+                            ComingSoonTransition("middle", "up");
+                            ComingSoonTransition("bottom", "up");
+                            PrintBothArrows();
+                            break;
                     }
                 }
                 else if (_direccionTransicion == "down")
                 {
                     switch (_opcMenu)
                     {
-                        //case 0:
-                        //    ClearBothArrows();
-
-                        //    PrintDownArrow();
-                        //    break;
                         case 1:
                             ClearBothArrows();
                             SpaceInvadersTransition("middle", "down");
-                            BreakoutTransition("top", "down");
+                            ComingSoonTransition("top", "down");
+                            PrintBothArrows();
+                            break;
+                        case 2:
+                            ClearBothArrows();
+                            ComingSoonTransition("middle", "down");
+                            ComingSoonTransition("top", "down");
                             PrintUpArrow();
                             break;
+
                     }
                 }  
 
@@ -374,53 +378,53 @@ namespace Arcade
             else if (startingPosition == "middle" && direction == "up")
             {
                 x = 14;
-                limite = 0;
+                limite = -9;
 
-                for (int y = 25; y < limite; y--)
+                for (int y = 16; y > limite; y--)
                 {
-                    if (y > 7)
+                    if (y > -1)
                     {
-                        Console.SetCursorPosition(x, y - 7);
+                        Console.SetCursorPosition(x, y + 1);
                         Console.WriteLine(" ________  ________  ________  ________  _______           ___  ________   ___      ___ ________  ________  _______   ________  ________      \r\n");
                     }
-                    if (y > 6)
+                    if (y > -2)
                     {
-                        Console.SetCursorPosition(x, y - 6);
+                        Console.SetCursorPosition(x, y + 2);
                         Console.WriteLine("|\\   ____\\|\\   __  \\|\\   __  \\|\\   ____\\|\\  ___ \\         |\\  \\|\\   ___  \\|\\  \\    /  /|\\   __  \\|\\   ___ \\|\\  ___ \\ |\\   __  \\|\\   ____\\     \r\n");
                     }
-                    if (y > 5)
+                    if (y > -3)
                     {
-                        Console.SetCursorPosition(x, y + -5);
+                        Console.SetCursorPosition(x, y + 3);
                         Console.WriteLine("\\ \\  \\___|\\ \\  \\|\\  \\ \\  \\|\\  \\ \\  \\___|\\ \\   __/|        \\ \\  \\ \\  \\\\ \\  \\ \\  \\  /  / | \\  \\|\\  \\ \\  \\_|\\ \\ \\   __/|\\ \\  \\|\\  \\ \\  \\___|_    \r\n");
                     }
-                    if (y > 4)
+                    if (y > -4)
                     {
-                        Console.SetCursorPosition(x, y - 4);
+                        Console.SetCursorPosition(x, y + 4);
                         Console.WriteLine(" \\ \\_____  \\ \\   ____\\ \\   __  \\ \\  \\    \\ \\  \\_|/__       \\ \\  \\ \\  \\\\ \\  \\ \\  \\/  / / \\ \\   __  \\ \\  \\ \\\\ \\ \\  \\_|/_\\ \\   _  _\\ \\_____  \\   \r\n");
                     }
-                    if (y > 3)
+                    if (y > -5)
                     {
-                        Console.SetCursorPosition(x, y - 3);
+                        Console.SetCursorPosition(x, y + 5);
                         Console.WriteLine("  \\|____|\\  \\ \\  \\___|\\ \\  \\ \\  \\ \\  \\____\\ \\  \\_|\\ \\       \\ \\  \\ \\  \\\\ \\  \\ \\    / /   \\ \\  \\ \\  \\ \\  \\_\\\\ \\ \\  \\_|\\ \\ \\  \\\\  \\\\|____|\\  \\  \r\n");
                     }
-                    if (y > 2)
+                    if (y > -6)
                     {
-                        Console.SetCursorPosition(x, y - 2);
+                        Console.SetCursorPosition(x, y + 6);
                         Console.WriteLine("    ____\\_\\  \\ \\__\\    \\ \\__\\ \\__\\ \\_______\\ \\_______\\       \\ \\__\\ \\__\\\\ \\__\\ \\__/ /     \\ \\__\\ \\__\\ \\_______\\ \\_______\\ \\__\\\\ _\\ ____\\_\\  \\ \r\n");
                     }
-                    if (y > 1)
+                    if (y > -7)
                     {
-                        Console.SetCursorPosition(x, y - 1);
+                        Console.SetCursorPosition(x, y + 7);
                         Console.WriteLine("   |\\_________\\|__|     \\|__|\\|__|\\|_______|\\|_______|        \\|__|\\|__| \\|__|\\|__|/       \\|__|\\|__|\\|_______|\\|_______|\\|__|\\|__|\\_________\\\r\n");
                     }
-                    if (y > 0)
-                    {
-                        Console.SetCursorPosition(x, y);
-                        Console.WriteLine("   \\|_________|                                                                                                                   \\|_________|");
-                    }
-                    if (y > 8)
+                    if (y > -8)
                     {
                         Console.SetCursorPosition(x, y + 8);
+                        Console.WriteLine("   \\|_________|                                                                                                                   \\|_________|");
+                    }
+                    if (y > -9)
+                    {
+                        Console.SetCursorPosition(x, y + 9);
                         Console.Write(new string(' ', Console.WindowWidth));
                     }
                     Thread.Sleep(25);
@@ -429,51 +433,51 @@ namespace Arcade
             else if (startingPosition == "bottom" && direction == "up")
             {
                 x = 14;
-                limite = 25;
+                limite = 16;
 
-                for (int y = 42; y > limite; y--)
+                for (int y = 43; y > limite; y--)
                 {
-                    if (y + 1 > limite)
+                    if (y < 42)
                     {
                         Console.SetCursorPosition(x, y + 1);
                         Console.WriteLine(" ________  ________  ________  ________  _______           ___  ________   ___      ___ ________  ________  _______   ________  ________      \r\n");
                     }
-                    if (y + 2 > limite)
+                    if (y < 41)
                     {
                         Console.SetCursorPosition(x, y + 2);
                         Console.WriteLine("|\\   ____\\|\\   __  \\|\\   __  \\|\\   ____\\|\\  ___ \\         |\\  \\|\\   ___  \\|\\  \\    /  /|\\   __  \\|\\   ___ \\|\\  ___ \\ |\\   __  \\|\\   ____\\     \r\n");
                     }
-                    if (y + 3 > limite)
+                    if (y < 40)
                     {
                         Console.SetCursorPosition(x, y + 3);
                         Console.WriteLine("\\ \\  \\___|\\ \\  \\|\\  \\ \\  \\|\\  \\ \\  \\___|\\ \\   __/|        \\ \\  \\ \\  \\\\ \\  \\ \\  \\  /  / | \\  \\|\\  \\ \\  \\_|\\ \\ \\   __/|\\ \\  \\|\\  \\ \\  \\___|_    \r\n");
                     }
-                    if (y + 4 > limite)
+                    if (y < 39)
                     {
                         Console.SetCursorPosition(x, y + 4);
                         Console.WriteLine(" \\ \\_____  \\ \\   ____\\ \\   __  \\ \\  \\    \\ \\  \\_|/__       \\ \\  \\ \\  \\\\ \\  \\ \\  \\/  / / \\ \\   __  \\ \\  \\ \\\\ \\ \\  \\_|/_\\ \\   _  _\\ \\_____  \\   \r\n");
                     }
-                    if (y + 5 > limite)
+                    if (y < 38)
                     {
                         Console.SetCursorPosition(x, y + 5);
                         Console.WriteLine("  \\|____|\\  \\ \\  \\___|\\ \\  \\ \\  \\ \\  \\____\\ \\  \\_|\\ \\       \\ \\  \\ \\  \\\\ \\  \\ \\    / /   \\ \\  \\ \\  \\ \\  \\_\\\\ \\ \\  \\_|\\ \\ \\  \\\\  \\\\|____|\\  \\  \r\n");
                     }
-                    if (y + 6 > limite)
+                    if (y < 37)
                     {
                         Console.SetCursorPosition(x, y + 6);
                         Console.WriteLine("    ____\\_\\  \\ \\__\\    \\ \\__\\ \\__\\ \\_______\\ \\_______\\       \\ \\__\\ \\__\\\\ \\__\\ \\__/ /     \\ \\__\\ \\__\\ \\_______\\ \\_______\\ \\__\\\\ _\\ ____\\_\\  \\ \r\n");
                     }
-                    if (y + 7 > limite)
+                    if (y < 36)
                     {
                         Console.SetCursorPosition(x, y + 7);
                         Console.WriteLine("   |\\_________\\|__|     \\|__|\\|__|\\|_______|\\|_______|        \\|__|\\|__| \\|__|\\|__|/       \\|__|\\|__|\\|_______|\\|_______|\\|__|\\|__|\\_________\\\r\n");
                     }
-                    if (y + 8 > limite)
+                    if (y < 35)
                     {
                         Console.SetCursorPosition(x, y + 8);
                         Console.WriteLine("   \\|_________|                                                                                                                   \\|_________|");
                     }
-                    if (y + 9 > limite)
+                    if (y < 34)
                     {
                         Console.SetCursorPosition(x, y + 9);
                         Console.Write(new string(' ', Console.WindowWidth));
@@ -490,7 +494,229 @@ namespace Arcade
 
         public void ComingSoonTransition(string startingPosition, string direction)
         {
+            int x, limite;
 
+            if (startingPosition == "top" && direction == "down")
+            {
+                x = 25;
+                limite = 25;
+
+                for (int y = 1; y < limite; y++)
+                {
+                    if (y > 7)
+                    {
+                        Console.SetCursorPosition(x, y - 7);
+                        Console.WriteLine(" ________  ________  _____ ______   ___  ________   ________          ________  ________  ________  ________      \r\n");
+                    }
+                    if (y > 6)
+                    {
+                        Console.SetCursorPosition(x, y - 6);
+                        Console.WriteLine("|\\   ____\\|\\   __  \\|\\   _ \\  _   \\|\\  \\|\\   ___  \\|\\   ____\\        |\\   ____\\|\\   __  \\|\\   __  \\|\\   ___  \\    \r\n");
+                    }
+                    if (y > 5)
+                    {
+                        Console.SetCursorPosition(x, y + -5);
+                        Console.WriteLine("\\ \\  \\___|\\ \\  \\|\\  \\ \\  \\\\\\__\\ \\  \\ \\  \\ \\  \\\\ \\  \\ \\  \\___|        \\ \\  \\___|\\ \\  \\|\\  \\ \\  \\|\\  \\ \\  \\\\ \\  \\   \r\n");
+                    }
+                    if (y > 4)
+                    {
+                        Console.SetCursorPosition(x, y - 4);
+                        Console.WriteLine(" \\ \\  \\    \\ \\  \\\\\\  \\ \\  \\\\|__| \\  \\ \\  \\ \\  \\\\ \\  \\ \\  \\  ___       \\ \\_____  \\ \\  \\\\\\  \\ \\  \\\\\\  \\ \\  \\\\ \\  \\  \r\n");
+                    }
+                    if (y > 3)
+                    {
+                        Console.SetCursorPosition(x, y - 3);
+                        Console.WriteLine("  \\ \\  \\____\\ \\  \\\\\\  \\ \\  \\    \\ \\  \\ \\  \\ \\  \\\\ \\  \\ \\  \\|\\  \\       \\|____|\\  \\ \\  \\\\\\  \\ \\  \\\\\\  \\ \\  \\\\ \\  \\ \r\n");
+                    }
+                    if (y > 2)
+                    {
+                        Console.SetCursorPosition(x, y - 2);
+                        Console.WriteLine("   \\ \\_______\\ \\_______\\ \\__\\    \\ \\__\\ \\__\\ \\__\\\\ \\__\\ \\_______\\        ____\\_\\  \\ \\_______\\ \\_______\\ \\__\\\\ \\__\\\r\n");
+                    }
+                    if (y > 1)
+                    {
+                        Console.SetCursorPosition(x, y - 1);
+                        Console.WriteLine("    \\|_______|\\|_______|\\|__|     \\|__|\\|__|\\|__| \\|__|\\|_______|       |\\_________\\|_______|\\|_______|\\|__| \\|__|\r\n");
+                    }
+                    if (y > 0)
+                    {
+                        Console.SetCursorPosition(x, y);
+                        Console.WriteLine("                                                                        \\|_________|                              ");
+                    }
+                    if (y > 8)
+                    {
+                        Console.SetCursorPosition(x, y - 8);
+                        Console.Write(new string(' ', Console.WindowWidth));
+                    }
+                    Thread.Sleep(25);
+
+                    //Borra la letra introducida
+                    //Console.SetCursorPosition(x, y + 9);
+                    //Console.Write(new string(' ', Console.WindowWidth));
+                }
+            }
+            else if (startingPosition == "middle" && direction == "down")
+            {
+                x = 25;
+                limite = 42;
+
+                for (int y = 16; y < limite; y++)
+                {
+                    if (y + 1 < limite)
+                    {
+                        Console.SetCursorPosition(x, y + 1);
+                        Console.WriteLine(" ________  ________  _____ ______   ___  ________   ________          ________  ________  ________  ________      \r\n");
+                    }
+                    if (y + 2 < limite)
+                    {
+                        Console.SetCursorPosition(x, y + 2);
+                        Console.WriteLine("|\\   ____\\|\\   __  \\|\\   _ \\  _   \\|\\  \\|\\   ___  \\|\\   ____\\        |\\   ____\\|\\   __  \\|\\   __  \\|\\   ___  \\    \r\n");
+                    }
+                    if (y + 3 < limite)
+                    {
+                        Console.SetCursorPosition(x, y + 3);
+                        Console.WriteLine("\\ \\  \\___|\\ \\  \\|\\  \\ \\  \\\\\\__\\ \\  \\ \\  \\ \\  \\\\ \\  \\ \\  \\___|        \\ \\  \\___|\\ \\  \\|\\  \\ \\  \\|\\  \\ \\  \\\\ \\  \\   \r\n");
+                    }
+                    if (y + 4 < limite)
+                    {
+                        Console.SetCursorPosition(x, y + 4);
+                        Console.WriteLine(" \\ \\  \\    \\ \\  \\\\\\  \\ \\  \\\\|__| \\  \\ \\  \\ \\  \\\\ \\  \\ \\  \\  ___       \\ \\_____  \\ \\  \\\\\\  \\ \\  \\\\\\  \\ \\  \\\\ \\  \\  \r\n");
+                    }
+                    if (y + 5 < limite)
+                    {
+                        Console.SetCursorPosition(x, y + 5);
+                        Console.WriteLine("  \\ \\  \\____\\ \\  \\\\\\  \\ \\  \\    \\ \\  \\ \\  \\ \\  \\\\ \\  \\ \\  \\|\\  \\       \\|____|\\  \\ \\  \\\\\\  \\ \\  \\\\\\  \\ \\  \\\\ \\  \\ \r\n");
+                    }
+                    if (y + 6 < limite)
+                    {
+                        Console.SetCursorPosition(x, y + 6);
+                        Console.WriteLine("   \\ \\_______\\ \\_______\\ \\__\\    \\ \\__\\ \\__\\ \\__\\\\ \\__\\ \\_______\\        ____\\_\\  \\ \\_______\\ \\_______\\ \\__\\\\ \\__\\\r\n");
+                    }
+                    if (y + 7 < limite)
+                    {
+                        Console.SetCursorPosition(x, y + 7);
+                        Console.WriteLine("    \\|_______|\\|_______|\\|__|     \\|__|\\|__|\\|__| \\|__|\\|_______|       |\\_________\\|_______|\\|_______|\\|__| \\|__|\r\n");
+                    }
+                    if (y + 8 < limite)
+                    {
+                        Console.SetCursorPosition(x, y + 8);
+                        Console.WriteLine("                                                                        \\|_________|                              ");
+                    }
+                    Thread.Sleep(25);
+                    Console.SetCursorPosition(x, y + 1);
+                    Console.Write(new string(' ', Console.WindowWidth));
+                }
+            }
+            else if (startingPosition == "middle" && direction == "up")
+            {
+                x = 25;
+                limite = -9;
+
+                for (int y = 16; y > limite; y--)
+                {
+                    if (y > -1)
+                    {
+                        Console.SetCursorPosition(x, y + 1);
+                        Console.WriteLine(" ________  ________  _____ ______   ___  ________   ________          ________  ________  ________  ________      \r\n");
+                    }
+                    if (y > -2)
+                    {
+                        Console.SetCursorPosition(x, y + 2);
+                        Console.WriteLine("|\\   ____\\|\\   __  \\|\\   _ \\  _   \\|\\  \\|\\   ___  \\|\\   ____\\        |\\   ____\\|\\   __  \\|\\   __  \\|\\   ___  \\    \r\n");
+                    }
+                    if (y > -3)
+                    {
+                        Console.SetCursorPosition(x, y + 3);
+                        Console.WriteLine("\\ \\  \\___|\\ \\  \\|\\  \\ \\  \\\\\\__\\ \\  \\ \\  \\ \\  \\\\ \\  \\ \\  \\___|        \\ \\  \\___|\\ \\  \\|\\  \\ \\  \\|\\  \\ \\  \\\\ \\  \\   \r\n");
+                    }
+                    if (y > -4)
+                    {
+                        Console.SetCursorPosition(x, y + 4);
+                        Console.WriteLine(" \\ \\  \\    \\ \\  \\\\\\  \\ \\  \\\\|__| \\  \\ \\  \\ \\  \\\\ \\  \\ \\  \\  ___       \\ \\_____  \\ \\  \\\\\\  \\ \\  \\\\\\  \\ \\  \\\\ \\  \\  \r\n");
+                    }
+                    if (y > -5)
+                    {
+                        Console.SetCursorPosition(x, y + 5);
+                        Console.WriteLine("  \\ \\  \\____\\ \\  \\\\\\  \\ \\  \\    \\ \\  \\ \\  \\ \\  \\\\ \\  \\ \\  \\|\\  \\       \\|____|\\  \\ \\  \\\\\\  \\ \\  \\\\\\  \\ \\  \\\\ \\  \\ \r\n");
+                    }
+                    if (y > -6)
+                    {
+                        Console.SetCursorPosition(x, y + 6);
+                        Console.WriteLine("   \\ \\_______\\ \\_______\\ \\__\\    \\ \\__\\ \\__\\ \\__\\\\ \\__\\ \\_______\\        ____\\_\\  \\ \\_______\\ \\_______\\ \\__\\\\ \\__\\\r\n");
+                    }
+                    if (y > -7)
+                    {
+                        Console.SetCursorPosition(x, y + 7);
+                        Console.WriteLine("    \\|_______|\\|_______|\\|__|     \\|__|\\|__|\\|__| \\|__|\\|_______|       |\\_________\\|_______|\\|_______|\\|__| \\|__|\r\n");
+                    }
+                    if (y > -8)
+                    {
+                        Console.SetCursorPosition(x, y + 8);
+                        Console.WriteLine("                                                                        \\|_________|                              ");
+                    }
+                    if (y > -9)
+                    {
+                        Console.SetCursorPosition(x, y + 9);
+                        Console.Write(new string(' ', Console.WindowWidth));
+                    }
+                    Thread.Sleep(25);
+                }
+            }
+            else if (startingPosition == "bottom" && direction == "up")
+            {
+                x = 25;
+                limite = 16;
+
+                for (int y = 43; y > limite; y--)
+                {
+                    if (y < 42)
+                    {
+                        Console.SetCursorPosition(x, y + 1);
+                        Console.WriteLine(" ________  ________  _____ ______   ___  ________   ________          ________  ________  ________  ________      \r\n");
+                    }
+                    if (y < 41)
+                    {
+                        Console.SetCursorPosition(x, y + 2);
+                        Console.WriteLine("|\\   ____\\|\\   __  \\|\\   _ \\  _   \\|\\  \\|\\   ___  \\|\\   ____\\        |\\   ____\\|\\   __  \\|\\   __  \\|\\   ___  \\    \r\n");
+                    }
+                    if (y < 40)
+                    {
+                        Console.SetCursorPosition(x, y + 3);
+                        Console.WriteLine("\\ \\  \\___|\\ \\  \\|\\  \\ \\  \\\\\\__\\ \\  \\ \\  \\ \\  \\\\ \\  \\ \\  \\___|        \\ \\  \\___|\\ \\  \\|\\  \\ \\  \\|\\  \\ \\  \\\\ \\  \\   \r\n");
+                    }
+                    if (y < 39)
+                    {
+                        Console.SetCursorPosition(x, y + 4);
+                        Console.WriteLine(" \\ \\  \\    \\ \\  \\\\\\  \\ \\  \\\\|__| \\  \\ \\  \\ \\  \\\\ \\  \\ \\  \\  ___       \\ \\_____  \\ \\  \\\\\\  \\ \\  \\\\\\  \\ \\  \\\\ \\  \\  \r\n");
+                    }
+                    if (y < 38)
+                    {
+                        Console.SetCursorPosition(x, y + 5);
+                        Console.WriteLine("  \\ \\  \\____\\ \\  \\\\\\  \\ \\  \\    \\ \\  \\ \\  \\ \\  \\\\ \\  \\ \\  \\|\\  \\       \\|____|\\  \\ \\  \\\\\\  \\ \\  \\\\\\  \\ \\  \\\\ \\  \\ \r\n");
+                    }
+                    if (y < 37)
+                    {
+                        Console.SetCursorPosition(x, y + 6);
+                        Console.WriteLine("   \\ \\_______\\ \\_______\\ \\__\\    \\ \\__\\ \\__\\ \\__\\\\ \\__\\ \\_______\\        ____\\_\\  \\ \\_______\\ \\_______\\ \\__\\\\ \\__\\\r\n");
+                    }
+                    if (y < 36)
+                    {
+                        Console.SetCursorPosition(x, y + 7);
+                        Console.WriteLine("    \\|_______|\\|_______|\\|__|     \\|__|\\|__|\\|__| \\|__|\\|_______|       |\\_________\\|_______|\\|_______|\\|__| \\|__|\r\n");
+                    }
+                    if (y < 35)
+                    {
+                        Console.SetCursorPosition(x, y + 8);
+                        Console.WriteLine("                                                                        \\|_________|                              ");
+                    }
+                    if (y < 34)
+                    {
+                        Console.SetCursorPosition(x, y + 9);
+                        Console.Write(new string(' ', Console.WindowWidth));
+                    }
+                    Thread.Sleep(25);
+                }
+            }
         }
     }
 }
